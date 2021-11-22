@@ -1,0 +1,12 @@
+.register input{
+    width: 50%;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid gray;
+}
+/* .register .login_btn{
+    width: 50%;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 20px;
+} */

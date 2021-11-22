@@ -2,6 +2,7 @@ import React from 'react';
 import logo from '../../../Image_Icon/logo.png';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import './Navigation.css';
+import { Link } from 'react-router-dom';
 
 const Navigation = () => {
     return (
@@ -14,13 +15,16 @@ const Navigation = () => {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="ms-auto">
-                            <Nav.Link className="menubar">Home</Nav.Link>
-                            <Nav.Link className="menubar">About</Nav.Link>
-                            <Nav.Link className="menubar">Team</Nav.Link>
-                            <Nav.Link className="menubar">Contact</Nav.Link>
-                            <Nav.Link className="menubar">
-                                <Button variant="light">Login</Button>
-                            </Nav.Link>
+                            <Link to="/home" className="menubar">Home</Link>
+                            <Link to="/" className="menubar">About</Link>
+                            <Link to="/" className="menubar">Team</Link>
+                            <Link to="/" className="menubar">Contact</Link>
+                            <Link to="/dashbord" className="menubar">Dashbord</Link>
+                            <Link to="/login" className="menubar">
+                                <Button variant="info">
+                                    Login
+                                </Button>
+                            </Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
