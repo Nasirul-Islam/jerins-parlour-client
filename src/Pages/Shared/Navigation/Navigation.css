@@ -1,0 +1,21 @@
+.navbar-nav{
+    align-items: center;
+}
+.menubar {
+    font-size: 18px;
+    font-weight: 600;
+    color: black !important;
+    margin-left: 10px;
+}
+.menubar button{
+    background-color: rgb(255, 1, 149);
+    padding: 10px 26px;
+}
+.navbar-nav :hover{
+    color: rgb(241, 85, 176) !important;
+}
+.navbar-nav :hover button{
+    color: white !important;
+    background-color: rgb(241, 85, 176) !important;
+}
+

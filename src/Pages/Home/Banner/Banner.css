@@ -1,0 +1,8 @@
+.banner_button {
+    background-color: rgb(255, 1, 149) !important;
+    color: whitesmoke;
+    padding: 10px 30px !important;
+}
+.banner_text :hover .banner_button {
+    background-color: rgb(230, 4, 136) !important;
+}

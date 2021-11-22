@@ -1,0 +1,11 @@
+.footer {
+    background-color: rgb(246 0 136);
+    padding: 50px 0;
+}
+.footer h5 {
+color: white;
+}
+.footer a, .aboutText, .address {
+    text-decoration: none;
+    color: rgb(238, 229, 229);
+}
