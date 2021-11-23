@@ -5,13 +5,15 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, on
 initializeFirebase();
 
 const useFirebase = () => {
-    const [user, setUser] = useState([]);
+    const [user, setUser] = useState({});
     const [errorMessage, seterrorMessage] = useState('');
+    const [isLoding, setisLoding] = useState(true);
 
     const auth = getAuth();
     const googleprovider = new GoogleAuthProvider();
 
     const createAccountWithEmail = (email, password) => {
+        setisLoding(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // Signed in 
@@ -19,9 +21,12 @@ const useFirebase = () => {
             })
             .catch((error) => {
                 seterrorMessage(error.message);
-            });
+            })
+            .finally(() => setisLoding(false));
+
     };
     const loginWithEmail = (email, password) => {
+        setisLoding(true);
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // Signed in 
@@ -29,38 +34,45 @@ const useFirebase = () => {
             })
             .catch((error) => {
                 seterrorMessage(error.message);
-            });
+            })
+            .finally(() => setisLoding(false));
     };
     const loginWithGoogle = () => {
+        setisLoding(true);
         signInWithPopup(auth, googleprovider)
             .then((result) => {
                 const user = result.user;
                 // ...
             }).catch((error) => {
                 seterrorMessage(error.message);
-            });
+            })
+            .finally(() => setisLoding(false));
     }
     useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
-                // const uid = user.uid;
                 setUser(user);
             }
             else {
-                setUser([]);
+                setUser({});
             }
+            setisLoding(false)
         });
-    }, []);
+        return () => unsubscribe;
+    }, [auth]);
     const logOut = () => {
+        setisLoding(true);
         signOut(auth).then(() => {
             // Sign-out successful.
         }).catch((error) => {
             // An error happened.
-        });
+        })
+            .finally(() => setisLoding(false));
     }
     return {
         user,
         errorMessage,
+        isLoding,
         createAccountWithEmail,
         loginWithEmail,
         loginWithGoogle,

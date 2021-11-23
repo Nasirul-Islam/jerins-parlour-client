@@ -6,6 +6,7 @@ import AOS from 'aos';
 import Register from "./Pages/Login/Register/Register";
 import Dashbord from "./Pages/Dashbord/Dashbord/Dashbord";
 import AuthContext from "./context/AuthContext/AuthContext";
+import PrivateRoute from "./Pages/Login/PrivateRoute/PrivateRoute";
 
 AOS.init();
 
@@ -19,7 +20,10 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/dashbord" element={<Dashbord />} />
+            <Route path="/dashbord" element={
+              <PrivateRoute>
+                <Dashbord />
+              </PrivateRoute>} />
           </Routes>
         </BrowserRouter>
       </AuthContext>
