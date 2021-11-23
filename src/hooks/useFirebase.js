@@ -12,12 +12,15 @@ const useFirebase = () => {
     const auth = getAuth();
     const googleprovider = new GoogleAuthProvider();
 
-    const createAccountWithEmail = (email, password) => {
+    const createAccountWithEmail = (email, password, displayName, location, navigate) => {
         setisLoding(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
+                const distination = location?.state?.from || "/";
+                navigate(distination);
+                seterrorMessage('');
             })
             .catch((error) => {
                 seterrorMessage(error.message);
@@ -25,24 +28,29 @@ const useFirebase = () => {
             .finally(() => setisLoding(false));
 
     };
-    const loginWithEmail = (email, password) => {
+    const loginWithEmail = (email, password, location, navigate) => {
         setisLoding(true);
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
+                const distination = location?.state?.from || "/";
+                navigate(distination);
+                seterrorMessage('');
             })
             .catch((error) => {
                 seterrorMessage(error.message);
             })
             .finally(() => setisLoding(false));
     };
-    const loginWithGoogle = () => {
+    const loginWithGoogle = (location, navigate) => {
         setisLoding(true);
         signInWithPopup(auth, googleprovider)
             .then((result) => {
                 const user = result.user;
-                // ...
+                const distination = location?.state?.from || "/";
+                navigate(distination);
+                seterrorMessage('');
             }).catch((error) => {
                 seterrorMessage(error.message);
             })

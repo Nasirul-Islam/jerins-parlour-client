@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Container } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Register.css';
 import google from '../../../Image_Icon/Icon/Group 573.png';
 import fb from '../../../Image_Icon/Icon/fblogo.png';
@@ -11,10 +11,12 @@ import useAuth from '../../../hooks/useAuth';
 
 const Register = () => {
     const { createAccountWithEmail, loginWithGoogle } = useAuth();
+    const location = useLocation();
+    const navigate = useNavigate();
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         console.log(data);
-        createAccountWithEmail(data.email, data.password, data.firstName + ' ' + data.lastName);
+        createAccountWithEmail(data.email, data.password, data.firstName + ' ' + data.lastName, location, navigate);
         reset();
     };
     return (
@@ -62,7 +64,7 @@ const Register = () => {
                             className="border border-secondary rounded-pill  p-2 d-flex align-items-center">
                             <img width="30px" height="30px" src={google} alt="" />
                             <Button
-                                onClick={loginWithGoogle}
+                                onClick={() => loginWithGoogle(location, navigate)}
                                 variant="light" className="flex-grow-1">Continue With Google</Button>
                         </div>
                         <div

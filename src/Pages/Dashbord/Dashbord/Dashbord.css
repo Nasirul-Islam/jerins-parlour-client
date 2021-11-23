@@ -1,0 +1,18 @@
+.dashbord{
+    width: 90%;
+}
+.dashbordDrawer{
+    height: 100vh;
+}
+.dashbordHeader {
+    height: 90px;
+    line-height: 90px;
+}
+.dashbordLink a{
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    font-weight: 500;
+    display: inline-block;
+    margin-bottom: 10px;
+}

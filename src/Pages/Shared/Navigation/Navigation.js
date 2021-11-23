@@ -12,16 +12,17 @@ const Navigation = () => {
             <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
                 <Container>
                     <Navbar.Brand href="#home">
-                        <img height="50px" width="150px" src={logo} alt="" />
+                        <img height="50px" width="150px" src={logo} alt="logo" />
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="ms-auto">
                             {user?.email}
                             <Link to="/home" className="menubar">Home</Link>
-                            <Link to="/" className="menubar">About</Link>
-                            <Link to="/" className="menubar">Team</Link>
-                            <Link to="/" className="menubar">Contact</Link>
+                            <Link to="/about" className="menubar">About</Link>
+                            <Link to="/team" className="menubar">Team</Link>
+                            <Link to="/contact"
+                                className="menubar">Contact</Link>
                             {!user?.email ?
                                 <Link to="/login" className="menubar">
                                     <Button variant="info">

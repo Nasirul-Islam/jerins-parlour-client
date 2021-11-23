@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Login.css';
 import Navigation from '../../Shared/Navigation/Navigation';
 import Footer from '../../Shared/Footer/Footer';
@@ -9,10 +9,12 @@ import useAuth from '../../../hooks/useAuth';
 
 const Login = () => {
     const { loginWithEmail } = useAuth();
+    const location = useLocation();
+    const navigate = useNavigate();
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         console.log(data);
-        loginWithEmail(data.email, data.password);
+        loginWithEmail(data.email, data.password, location, navigate);
         reset();
     };
     return (
