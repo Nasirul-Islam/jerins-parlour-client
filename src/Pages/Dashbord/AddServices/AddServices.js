@@ -1,26 +1,53 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import useAuth from '../../../hooks/useAuth';
+import './AddServices.css';
 
 const AddServices = () => {
+    const { user } = useAuth();
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         console.log(data);
         reset();
     };
     return (
-        <div>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <input
-                    placeholder="Email" required {...register("email")} />
-                <br />
-                <br />
-                <input
-                    type="password"
-                    placeholder="Password" required {...register("password")} />
-                <br />
-                <input type="submit" value="Login" className="banner_button border-0 my-5" />
-            </form>
-        </div>
+        <>
+            <div className="dashbordHeader d-flex justify-content-between">
+                <p className="fs-2 fw-bold">Add Services</p>
+                <p>{user?.email}</p>
+            </div>
+            <div className="d-flex justify-content-center">
+                <form className="w-75" onSubmit={handleSubmit(onSubmit)}>
+                    <div className="mb-3 text-center">
+                        <label
+                            className="form-label fw-bold">Service title</label>
+                        <input type="text"
+                            className="form-control" placeholder="title"
+                            required {...register("title")} />
+                    </div>
+                    <div className="mb-3 text-center">
+                        <label className="form-label fw-bold">Description</label>
+                        <textarea placeholder="Enter Description" className="form-control" rows="4" required {...register("description")}></textarea>
+                    </div>
+                    <div className="mb-3 text-center">
+                        <label className="form-label fw-bold">Upload Image</label>
+                        <input className="form-control"
+                            type="file"
+                            {...register("img")} />
+                    </div>
+                    <h3>or</h3>
+                    <div className="mb-3 text-center">
+                        <label
+                            className="form-label fw-bold">image url</label>
+                        <input type="text"
+                            className="form-control" placeholder="image url"
+                            required {...register("url")} />
+                    </div>
+                    <br />
+                    <input type="submit" value="Add Service" className="banner_button border-0 rounded my-3 w-75" />
+                </form>
+            </div>
+        </>
     );
 };
 

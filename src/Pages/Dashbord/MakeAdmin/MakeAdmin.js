@@ -1,10 +1,34 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
+import useAuth from '../../../hooks/useAuth';
 
 const MakeAdmin = () => {
+    const { user } = useAuth();
+    const { register, handleSubmit, reset } = useForm();
+    const onSubmit = data => {
+        console.log(data);
+        reset();
+    };
     return (
-        <div>
-            <h2>MakeAdmin MakeAdmin</h2>
-        </div>
+        <>
+            <div className="dashbordHeader d-flex justify-content-between">
+                <p className="fs-2 fw-bold">Make Admin</p>
+                <p>{user?.email}</p>
+            </div>
+            <div className="d-flex justify-content-center">
+                <form className="w-50" onSubmit={handleSubmit(onSubmit)}>
+                    <div className="mb-3 text-center">
+                        <label
+                            className="form-label fw-bold">Email</label>
+                        <input type="email"
+                            className="form-control" placeholder="Email"
+                            required {...register("email")} />
+                    </div>
+
+                    <input type="submit" value="Submit" className="banner_button border-0 rounded my-2" />
+                </form>
+            </div>
+        </>
     );
 };
 
