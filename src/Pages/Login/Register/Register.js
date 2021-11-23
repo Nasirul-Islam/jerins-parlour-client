@@ -7,10 +7,10 @@ import google from '../../../Image_Icon/Icon/Group 573.png';
 import fb from '../../../Image_Icon/Icon/fblogo.png';
 import Footer from '../../Shared/Footer/Footer';
 import Navigation from '../../Shared/Navigation/Navigation';
-import useFirebase from '../../../hooks/useFirebase';
+import useAuth from '../../../hooks/useAuth';
 
 const Register = () => {
-    const { user, createAccountWithEmail, loginWithGoogle } = useFirebase();
+    const { createAccountWithEmail, loginWithGoogle } = useAuth();
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         console.log(data);

@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 import './Login.css';
 import Navigation from '../../Shared/Navigation/Navigation';
 import Footer from '../../Shared/Footer/Footer';
-import useFirebase from '../../../hooks/useFirebase';
+import useAuth from '../../../hooks/useAuth';
 
 const Login = () => {
-    const { user, loginWithEmail } = useFirebase();
+    const { loginWithEmail } = useAuth();
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         console.log(data);
