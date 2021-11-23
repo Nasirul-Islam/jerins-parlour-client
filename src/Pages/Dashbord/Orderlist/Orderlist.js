@@ -1,9 +1,15 @@
-import React from 'react';
-import { Button, Form, Table } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Table } from 'react-bootstrap';
 import useAuth from '../../../hooks/useAuth';
 
 const Orderlist = () => {
     const { user } = useAuth();
+    const [select, setSelect] = useState('');
+    // const handleconfirm = (e) => {
+    // }
+    // const handledelete = (e) => {
+    // }
+    console.log(select);
     return (
         <>
             <div className="dashbordHeader d-flex justify-content-between">
@@ -23,14 +29,16 @@ const Orderlist = () => {
                     <tbody>
                         {Array.from({ length: 12 }).map((_, index) => (
                             <tr key={index}>
+                                <td>{index}</td>
                                 <td>{user?.email}</td>
                                 <td>{index}</td>
-                                <td>{index}</td>
                                 <td>
-                                    <Form.Select aria-label="select">
-                                        <option value="1">confirm</option>
-                                        <option value="2">delete</option>
-                                    </Form.Select>
+                                    <select value="select"
+                                        onChange={e => setSelect(e.target.value)}>
+                                        <option>select</option>
+                                        <option>confirm</option>
+                                        <option>delete</option>
+                                    </select>
                                 </td>
                             </tr>
                         ))}
