@@ -6,7 +6,6 @@ import './Services.css';
 
 const Services = () => {
     const { services } = useServices();
-    console.log(services);
     return (
         <Container className="my-5">
             <div data-aos="fade-down">

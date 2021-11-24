@@ -2,11 +2,23 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../../hooks/useAuth';
 
+
 const AddReview = () => {
     const { user } = useAuth();
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         console.log(data);
+        fetch("http://localhost:5000/reviews", {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
         reset();
     };
     return (
@@ -26,7 +38,7 @@ const AddReview = () => {
                     <div className="mb-3 text-center">
                         <label className="form-label fw-bold">Description</label>
                         <textarea placeholder="Enter Description" className="form-control" rows="4"
-                            {...register("description", { required: true, maxLength: 150 })} ></textarea>
+                            {...register("description")} ></textarea>
                     </div>
                     <div className="mb-3 text-center">
                         <label className="form-label fw-bold">image url</label>
