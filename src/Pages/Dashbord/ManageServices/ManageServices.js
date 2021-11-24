@@ -1,11 +1,21 @@
 import React, { useState } from 'react';
 import { Table, Button } from 'react-bootstrap';
 import useAuth from '../../../hooks/useAuth';
+import useServices from '../../../hooks/useServices';
 
 const ManageServices = () => {
     const { user } = useAuth();
-    const handledelete = () => {
-        console.log("select");
+    const { services } = useServices();
+    const handledelete = (id) => {
+        console.log("delete", id);
+        fetch(`http://localhost:5000/services/${id}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                alert("deleted successfully")
+            })
     }
     return (
         <>
@@ -24,13 +34,13 @@ const ManageServices = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {Array.from({ length: 12 }).map((_, index) => (
+                        {services?.map((service, index) => (
                             <tr key={index}>
-                                <td>{index}</td>
-                                <td>{user?.email}</td>
-                                <td>{index}</td>
+                                <td>{index + 1}</td>
+                                <td>{service?.title}</td>
+                                <td>{service?._id}</td>
                                 <td>
-                                    <Button onClick={handledelete} variant="danger">Delete</Button>
+                                    <Button onClick={() => handledelete(service?._id)} variant="danger">Delete</Button>
                                 </td>
                             </tr>
                         ))}

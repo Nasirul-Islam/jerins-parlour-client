@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import banner from '../../../Image_Icon/Image/beautifulng-woman.png';
 import './Banner.css';
 
@@ -14,7 +15,9 @@ const Banner = () => {
                         <div>
                             <h1 className="text-uppercase fw-bold">beauty salon <br /> forever women</h1>
                             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.Beatae, reiciendis.Numquam, blanditiis esse.Qui amet laboriosam veniam dolor saepe, architecto quas fugit voluptas?Incidunt ab ipsam, modi ea quod aperiam!</p>
-                            <Button className="banner_button border-0">Get An Appointment</Button>
+                            <Link to="/allServices">
+                                <Button className="banner_button border-0">Get An Appointment</Button>
+                            </Link>
                         </div>
                     </Col>
                     <Col xs={12} sm={12} md={6} lg={6}>

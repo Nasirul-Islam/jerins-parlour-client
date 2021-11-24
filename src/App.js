@@ -16,6 +16,7 @@ import Bookinglist from "./Pages/Dashbord/Bookinglist/Bookinglist";
 import MakeAdmin from "./Pages/Dashbord/MakeAdmin/MakeAdmin";
 import ManageServices from "./Pages/Dashbord/ManageServices/ManageServices";
 import Orderlist from "./Pages/Dashbord/Orderlist/Orderlist";
+import AllServices from "./Pages/AllServices/AllServices";
 
 AOS.init();
 
@@ -27,6 +28,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/allServices" element={<AllServices />} />
             <Route path="/contact" element={
               <PrivateRoute>
                 <Contact />
