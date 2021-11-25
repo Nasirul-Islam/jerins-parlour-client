@@ -14,7 +14,18 @@ const MyVerticallyCenteredModal = (props) => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         data.orderId = serviceresult?._id
-        console.log(data);
+        // console.log(data);
+        fetch('http://localhost:5000/orders', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
         reset();
     };
     return (
