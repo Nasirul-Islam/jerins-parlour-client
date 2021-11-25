@@ -42,7 +42,7 @@ function App() {
               </PrivateRoute>} >
               {/* for User */}
               <Route path="/dashbord" element={<Bookinglist />} />
-              <Route path="/dashbord/book" element={<Book />} />
+              <Route path="/dashbord/book/:id" element={<Book />} />
               <Route path="/dashbord/bookinglist" element={<Bookinglist />} />
               <Route path="/dashbord/addReview" element={<AddReview />} />
               {/* for Admin */}

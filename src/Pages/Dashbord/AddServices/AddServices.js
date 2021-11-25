@@ -54,6 +54,13 @@ const AddServices = () => {
                             className="form-control" placeholder="image url"
                             required {...register("url")} />
                     </div>
+                    <div className="mb-3 text-center">
+                        <label
+                            className="form-label fw-bold">Price</label>
+                        <input type="number"
+                            className="form-control" placeholder="Price"
+                            required {...register("price")} />
+                    </div>
                     <br />
                     <input type="submit" value="Add Service" className="banner_button border-0 rounded my-3 w-75" />
                 </form>

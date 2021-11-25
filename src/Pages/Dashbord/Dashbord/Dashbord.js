@@ -3,8 +3,10 @@ import { Col, Row } from 'react-bootstrap';
 import { Link, Outlet } from 'react-router-dom';
 import './Dashbord.css';
 import logo from '../../../Image_Icon/logo.png';
+import { useParams } from 'react-router';
 
 const Dashbord = () => {
+    const { id } = useParams();
     return (
         <div className="dashbord">
             <Row>
@@ -16,7 +18,7 @@ const Dashbord = () => {
                         {/* for User */}
                         <Link to="/home">Home</Link>
                         <br />
-                        <Link to="/dashbord/book">Book</Link>
+                        <Link to={`/dashbord/book/${id}`}>Book</Link>
                         <br />
                         <Link to="/dashbord/bookinglist">Booking list</Link>
                         <br />
