@@ -14,6 +14,7 @@ const MyVerticallyCenteredModal = (props) => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         data.orderId = serviceresult?._id
+        data.status = "pending"
         // console.log(data);
         fetch('http://localhost:5000/orders', {
             method: 'POST',
@@ -25,6 +26,9 @@ const MyVerticallyCenteredModal = (props) => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
+                if (data?.insertedId) {
+                    alert("Ordered Successfully");
+                }
             })
         reset();
     };
@@ -74,7 +78,9 @@ const MyVerticallyCenteredModal = (props) => {
                                 required {...register("date")} />
                         </div>
                         <br />
-                        <input type="submit" value="Submit" className="banner_button border-0 rounded my-3 w-75" />
+                        <input type="submit"
+                            value="Submit"
+                            className="banner_button border-0 rounded my-3 w-75" />
                     </form>
                 </Modal.Body>
                 <Modal.Footer>

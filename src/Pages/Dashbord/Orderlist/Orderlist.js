@@ -1,15 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 import useAuth from '../../../hooks/useAuth';
 
 const Orderlist = () => {
     const { user } = useAuth();
     const [select, setSelect] = useState('');
+    const [orders, setOrders] = useState([]);
+    useEffect(() => {
+        fetch('http://localhost:5000/orders')
+            .then(res => res.json())
+            .then(data => setOrders(data))
+    }, []);
+    console.log(select);
     // const handleconfirm = (e) => {
     // }
     // const handledelete = (e) => {
     // }
-    console.log(select);
     return (
         <>
             <div className="dashbordHeader d-flex justify-content-between">
@@ -22,16 +28,18 @@ const Orderlist = () => {
                         <tr>
                             <th>#</th>
                             <th>Email</th>
+                            <th>Date</th>
                             <th>ID</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {Array.from({ length: 12 }).map((_, index) => (
+                        {orders?.map((order, index) => (
                             <tr key={index}>
-                                <td>{index}</td>
-                                <td>{user?.email}</td>
-                                <td>{index}</td>
+                                <td>{index + 1}</td>
+                                <td>{order?.email}</td>
+                                <td>{order?.date}</td>
+                                <td>{order?._id}</td>
                                 <td>
                                     <select value="select"
                                         onChange={e => setSelect(e.target.value)}>
