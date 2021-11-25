@@ -5,17 +5,41 @@ import useAuth from '../../../hooks/useAuth';
 const Orderlist = () => {
     const { user } = useAuth();
     const [select, setSelect] = useState('');
+    const [id, setid] = useState('');
     const [orders, setOrders] = useState([]);
     useEffect(() => {
         fetch('http://localhost:5000/orders')
             .then(res => res.json())
             .then(data => setOrders(data))
-    }, []);
-    console.log(select);
-    // const handleconfirm = (e) => {
-    // }
-    // const handledelete = (e) => {
-    // }
+    }, [select]);
+    // console.log(select);
+    // console.log(id);
+    if (select === "confirm") {
+        console.log("confirm api is here")
+        fetch(`http://localhost:5000/orders/${id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data?.modifiedCount) {
+                    alert("Approved Successfully");
+                }
+            })
+    }
+    else if (select === "delete") {
+        fetch(`http://localhost:5000/orders/${id}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data?.deletedCount) {
+                    alert("Delete Successfully");
+                }
+            })
+    }
     return (
         <>
             <div className="dashbordHeader d-flex justify-content-between">
@@ -42,7 +66,10 @@ const Orderlist = () => {
                                 <td>{order?._id}</td>
                                 <td>
                                     <select value="select"
-                                        onChange={e => setSelect(e.target.value)}>
+                                        onChange={e => {
+                                            setSelect(e.target.value);
+                                            setid(order?._id);
+                                        }}>
                                         <option>select</option>
                                         <option>confirm</option>
                                         <option>delete</option>

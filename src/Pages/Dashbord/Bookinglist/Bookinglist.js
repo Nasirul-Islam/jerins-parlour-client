@@ -23,6 +23,8 @@ const Bookinglist = () => {
                     {
                         userOrders?.map(orders => <Booking
                             key={orders?._id}
+                            id={orders?._id}
+                            status={orders?.status}
                             orderId={orders?.orderId}></Booking>)
                     }
                 </Row>
