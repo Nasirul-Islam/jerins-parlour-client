@@ -7,15 +7,26 @@ const MakeAdmin = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         console.log(data);
+        fetch('http://localhost:5000/adminUsers', {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
         reset();
     };
     return (
         <>
             <div className="dashbordHeader d-flex justify-content-between">
                 <p className="fs-2 fw-bold">Make Admin</p>
-                <p>{user?.email}</p>
+                <p>{user?.displayName}</p>
             </div>
-            <div className="d-flex justify-content-center">
+            <div className="d-flex justify-content-center my-5">
                 <form className="w-50" onSubmit={handleSubmit(onSubmit)}>
                     <div className="mb-3 text-center">
                         <label

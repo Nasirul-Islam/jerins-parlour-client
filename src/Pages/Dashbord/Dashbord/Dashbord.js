@@ -4,9 +4,12 @@ import { Link, Outlet } from 'react-router-dom';
 import './Dashbord.css';
 import logo from '../../../Image_Icon/logo.png';
 import { useParams } from 'react-router';
+import useAuth from '../../../hooks/useAuth';
 
 const Dashbord = () => {
     const { id } = useParams();
+    const { admin } = useAuth();
+    console.log(admin);
     return (
         <div className="dashbord">
             <Row>
@@ -25,13 +28,15 @@ const Dashbord = () => {
                         <Link to="/dashbord/addReview">Review</Link>
                         <br />
                         {/* for Admin */}
-                        <Link to="/dashbord/orderlist">Order list</Link>
-                        <br />
-                        <Link to="/dashbord/addServices">Add Services</Link>
-                        <br />
-                        <Link to="/dashbord/manageServices">Manage Services</Link>
-                        <br />
-                        <Link to="/dashbord/makeAdmin">Make Admin</Link>
+                        {admin && <>
+                            <Link to="/dashbord/orderlist">Order list</Link>
+                            <br />
+                            <Link to="/dashbord/addServices">Add Services</Link>
+                            <br />
+                            <Link to="/dashbord/manageServices">Manage Services</Link>
+                            <br />
+                            <Link to="/dashbord/makeAdmin">Make Admin</Link>
+                        </>}
                     </div>
                 </Col>
                 <Col sm={10} md={9}>

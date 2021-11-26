@@ -17,6 +17,7 @@ import MakeAdmin from "./Pages/Dashbord/MakeAdmin/MakeAdmin";
 import ManageServices from "./Pages/Dashbord/ManageServices/ManageServices";
 import Orderlist from "./Pages/Dashbord/Orderlist/Orderlist";
 import AllServices from "./Pages/AllServices/AllServices";
+import AdminRoute from "./Pages/Login/AdminRoute/AdminRoute";
 
 AOS.init();
 
@@ -46,11 +47,14 @@ function App() {
               <Route path="/dashbord/bookinglist" element={<Bookinglist />} />
               <Route path="/dashbord/addReview" element={<AddReview />} />
               {/* for Admin */}
+              {/* <AdminRoute> */}
               <Route path="/dashbord/orderlist" element={<Orderlist />} />
-              <Route path="/dashbord/addServices" element={<AddServices />} />
-              <Route path="/dashbord/manageServices" element={<ManageServices />} />
-
+              <Route path="/dashbord/addServices"
+                element={<AddServices />} />
+              <Route path="/dashbord/manageServices"
+                element={<ManageServices />} />
               <Route path="/dashbord/makeAdmin" element={<MakeAdmin />} />
+              {/* </AdminRoute> */}
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
