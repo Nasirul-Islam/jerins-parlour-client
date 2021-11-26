@@ -10,8 +10,8 @@ const Services = () => {
     return (
         <Container className="my-5">
             <div data-aos="fade-down">
-                <h3 className="fw-bold my-5">Our Awesome
-                    <span className="services_header">Services</span></h3>
+                <h3 className="fw-bold my-5">Our
+                    Awesome <span className="services_header">Services</span></h3>
             </div>
             <div data-aos="fade-right">
                 <Row xs={1} sm={2} md={3} lg={3} className="g-4">

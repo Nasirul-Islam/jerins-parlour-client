@@ -18,6 +18,8 @@ import ManageServices from "./Pages/Dashbord/ManageServices/ManageServices";
 import Orderlist from "./Pages/Dashbord/Orderlist/Orderlist";
 import AllServices from "./Pages/AllServices/AllServices";
 import AdminRoute from "./Pages/Login/AdminRoute/AdminRoute";
+import About from "./Pages/About/About";
+import Team from "./Pages/Team/Team";
 
 AOS.init();
 
@@ -29,6 +31,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/team" element={<Team />} />
             <Route path="/allServices" element={<AllServices />} />
             <Route path="/contact" element={
               <PrivateRoute>

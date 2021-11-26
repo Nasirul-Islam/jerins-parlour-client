@@ -2,7 +2,7 @@ import React from 'react';
 import Rating from 'react-rating';
 
 const Testimonial = ({ review }) => {
-    const { _id, name, description, url, rating } = review;
+    const { name, description, url, rating } = review;
     // const Rating = require('react-rating');
     return (
         <div className="mx-2 p-3">

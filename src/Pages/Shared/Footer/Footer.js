@@ -49,7 +49,7 @@ const Footer = () => {
                         <Col xs={12} sm={12} md={4} lg={4}>
                             <div className="">
                                 <h5 className="mb-3">About Us</h5>
-                                <p className="lh-base aboutText">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime esse autem, id, laudantium reprehenderit harum odio praesentium ad quis labore beatae distinctio voluptates impedit odit accusamus aperiam! Impedit, aut provident.</p>
+                                <p className="lh-base aboutText">This beauty salon is an organization that provides various cosmetic treatments and cosmetic services for women. We can provide a variety of services including professional haircuts and styling, manicures and pedicures and often cosmetics, makeup and makeovers.</p>
                             </div>
                             <div className="">
                                 <img

@@ -14,7 +14,7 @@ const Banner = () => {
                     <Col xs={12} sm={12} md={6} lg={6} className="d-flex align-items-center text-start banner_text">
                         <div>
                             <h1 className="text-uppercase fw-bold">beauty salon <br /> forever women</h1>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.Beatae, reiciendis.Numquam, blanditiis esse.Qui amet laboriosam veniam dolor saepe, architecto quas fugit voluptas?Incidunt ab ipsam, modi ea quod aperiam!</p>
+                            <p>Your good looks are the best indication of my success. I will make sure that that you walk out of my salon looking great and feeling terrific. Your self-confidence is my measure of success, and my first priority is to ensure that it happens. I love making you beautiful.</p>
                             <Link to="/allServices">
                                 <Button className="banner_button border-0">Get An Appointment</Button>
                             </Link>

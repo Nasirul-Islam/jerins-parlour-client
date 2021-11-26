@@ -22,7 +22,7 @@ const Professional = () => {
                                         className="services_header"> Professionally
                                     </span>
                                 </h2>
-                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum aperiam, temporibus delectus dolorum natus accusamus officia suscipit veritatis. Id amet laudantium fuga consectetur? Ipsa minima laboriosam corporis nesciunt facilis vitae!</p>
+                                <p>I will make sure that that you walk out of my salon looking great and feeling terrific. Your self-confidence is my measure of success, and my first priority is to ensure that it happens. I love making you beautiful.</p>
                             </div>
                             <div className="d-flex align-items-center mt-5">
                                 <div className="me-5">
