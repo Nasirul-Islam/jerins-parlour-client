@@ -8,7 +8,7 @@ const Booking = ({ status, orderId, id }) => {
     // console.log(orders[0]);
     const orderCancel = (id) => {
         console.log(id)
-        fetch(`http://localhost:5000/orders/${id}`, {
+        fetch(`https://blooming-woodland-11571.herokuapp.com/orders/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

@@ -8,7 +8,7 @@ const AddServices = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         console.log(data);
-        fetch("http://localhost:5000/services", {
+        fetch("https://blooming-woodland-11571.herokuapp.com/services", {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -25,7 +25,7 @@ const AddServices = () => {
         <>
             <div className="dashbordHeader d-flex justify-content-between">
                 <p className="fs-2 fw-bold">Add Services</p>
-                <p>{user?.email}</p>
+                <p>{user?.displayName}</p>
             </div>
             <div className="d-flex justify-content-center">
                 <form className="w-75" onSubmit={handleSubmit(onSubmit)}>

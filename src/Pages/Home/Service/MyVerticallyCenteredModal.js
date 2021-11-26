@@ -16,7 +16,7 @@ const MyVerticallyCenteredModal = (props) => {
         data.orderId = serviceresult?._id
         data.status = "pending"
         // console.log(data);
-        fetch('http://localhost:5000/orders', {
+        fetch('https://blooming-woodland-11571.herokuapp.com/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

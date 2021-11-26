@@ -8,7 +8,7 @@ const Orderlist = () => {
     const [id, setid] = useState('');
     const [orders, setOrders] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/orders')
+        fetch('https://blooming-woodland-11571.herokuapp.com/orders')
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [select]);
@@ -16,7 +16,7 @@ const Orderlist = () => {
     // console.log(id);
     if (select === "confirm") {
         console.log("confirm api is here")
-        fetch(`http://localhost:5000/orders/${id}`, {
+        fetch(`https://blooming-woodland-11571.herokuapp.com/orders/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -30,7 +30,7 @@ const Orderlist = () => {
             })
     }
     else if (select === "delete") {
-        fetch(`http://localhost:5000/orders/${id}`, {
+        fetch(`https://blooming-woodland-11571.herokuapp.com/orders/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -44,7 +44,7 @@ const Orderlist = () => {
         <>
             <div className="dashbordHeader d-flex justify-content-between">
                 <p className="fs-2 fw-bold">Order List</p>
-                <p>{user?.email}</p>
+                <p>{user?.displayName}</p>
             </div>
             <div className="">
                 <Table responsive>

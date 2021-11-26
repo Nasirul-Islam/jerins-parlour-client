@@ -48,13 +48,14 @@ function App() {
               <Route path="/dashbord/addReview" element={<AddReview />} />
               {/* for Admin */}
               {/* <AdminRoute> */}
-              <Route path="/dashbord/orderlist" element={<Orderlist />} />
+              <Route path="/dashbord/orderlist"
+                element={<AdminRoute> <Orderlist /> </AdminRoute>} />
               <Route path="/dashbord/addServices"
-                element={<AddServices />} />
+                element={<AdminRoute> <AddServices /> </AdminRoute>} />
               <Route path="/dashbord/manageServices"
-                element={<ManageServices />} />
-              <Route path="/dashbord/makeAdmin" element={<MakeAdmin />} />
-              {/* </AdminRoute> */}
+                element={<AdminRoute> <ManageServices /> </AdminRoute>} />
+              <Route path="/dashbord/makeAdmin"
+                element={<AdminRoute><MakeAdmin /></AdminRoute>} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>

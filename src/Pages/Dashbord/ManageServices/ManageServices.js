@@ -8,7 +8,7 @@ const ManageServices = () => {
     const { services } = useServices();
     const handledelete = (id) => {
         console.log("delete", id);
-        fetch(`http://localhost:5000/services/${id}`, {
+        fetch(`https://blooming-woodland-11571.herokuapp.com/services/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -21,7 +21,7 @@ const ManageServices = () => {
         <>
             <div className="dashbordHeader d-flex justify-content-between">
                 <p className="fs-2 fw-bold">Manage Services</p>
-                <p>{user?.email}</p>
+                <p>{user?.displayName}</p>
             </div>
             <div className="">
                 <Table responsive>

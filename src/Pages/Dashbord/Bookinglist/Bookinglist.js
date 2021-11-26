@@ -7,7 +7,7 @@ const Bookinglist = () => {
     const { user } = useAuth();
     const [userOrders, setuserOrders] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/userOrders?email=${user?.email}`)
+        fetch(`https://blooming-woodland-11571.herokuapp.com/userOrders?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setuserOrders(data))
     }, [user?.email]);
@@ -16,7 +16,7 @@ const Bookinglist = () => {
         <>
             <div className="dashbordHeader d-flex justify-content-between">
                 <p className="fs-2 fw-bold">Booking List</p>
-                <p>{user?.email}</p>
+                <p>{user?.displayName}</p>
             </div>
             <div>
                 <Row xs={1} sm={2} md={3} lg={3} className="g-4">
