@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import initializeFirebase from "../Firebase/firebase.init";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, updateProfile, signOut } from "firebase/auth";
 
 initializeFirebase();
 
@@ -16,8 +16,17 @@ const useFirebase = () => {
         setisLoding(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                // Signed in 
-                const user = userCredential.user;
+                const newuser = { email, displayName };
+                setUser(newuser);
+                // send user info to db
+                saveusertodb(newuser, 'POST');
+                // update profile
+                updateProfile(auth.currentUser, {
+                    displayName: displayName
+                }).then(() => {
+                }).catch((error) => {
+                });
+                // redirect
                 const distination = location?.state?.from || "/";
                 navigate(distination);
                 seterrorMessage('');
@@ -48,6 +57,9 @@ const useFirebase = () => {
         signInWithPopup(auth, googleprovider)
             .then((result) => {
                 const user = result.user;
+                // send user info to db
+                saveusertodb(user, 'PUT');
+                // redirect
                 const distination = location?.state?.from || "/";
                 navigate(distination);
                 seterrorMessage('');
@@ -76,6 +88,18 @@ const useFirebase = () => {
             // An error happened.
         })
             .finally(() => setisLoding(false));
+    }
+    // save user to db
+    const saveusertodb = (user, method) => {
+        fetch('http://localhost:5000/users', {
+            method: method,
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
     }
     return {
         user,

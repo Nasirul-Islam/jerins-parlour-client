@@ -41,11 +41,11 @@ const Register = () => {
                                 placeholder="Email" required {...register("email")} />
                             <br />
                             <br />
-                            <input
+                            <input type="password"
                                 placeholder="Password" required {...register("password")} />
                             <br />
                             <br />
-                            <input
+                            <input type="password"
                                 placeholder="Confirm Password" required {...register("confirmPassword")} />
                             <br />
                             <input type="submit" value="Create an account" className="banner_button border-0 my-5" />

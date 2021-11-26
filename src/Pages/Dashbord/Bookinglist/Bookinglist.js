@@ -11,7 +11,7 @@ const Bookinglist = () => {
             .then(res => res.json())
             .then(data => setuserOrders(data))
     }, [user?.email]);
-    console.log(userOrders);
+    // console.log(userOrders);
     return (
         <>
             <div className="dashbordHeader d-flex justify-content-between">
