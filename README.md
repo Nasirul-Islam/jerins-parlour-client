@@ -1,4 +1,4 @@
-# Getting Started with CarHunt
+# Getting Started with jerinparlour
 
 ## Project Details -
 Link to live site of this project [https://jerinparlour.web.app/]
